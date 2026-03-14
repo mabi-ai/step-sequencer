@@ -71,3 +71,43 @@ export default defineConfig([
   },
 ])
 ```
+
+## Android Compilation
+
+This project uses [Capacitor](https://capacitorjs.com/) to wrap the web application into a native Android application.
+
+### Prerequisites
+- Node.js and `npm` installed.
+- Android Studio / Android SDK installed and configured.
+- Java 21 installed (required by Capacitor v7).
+
+### Build Steps
+
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Build the web application**:
+   Produce the production assets in the `dist` folder:
+   ```bash
+   npm run build
+   ```
+
+3. **Sync with Android**:
+   Copy the built web files into the Android native project:
+   ```bash
+   npx cap sync android
+   ```
+
+4. **Compile the APK**:
+   Navigate to the `android/` directory and build the debug APK using Gradle:
+   ```bash
+   cd android
+   ./gradlew assembleDebug
+   ```
+   *Alternatively, you can open the `android` folder in Android Studio and run/build it from the IDE.*
+
+**Output:**
+The compiled debug APK will be generated at:
+`android/app/build/outputs/apk/debug/app-debug.apk`
